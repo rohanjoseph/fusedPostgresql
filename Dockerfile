@@ -1,11 +1,14 @@
-From ubuntu:latest
+From phusion/baseimage
 Maintainer Rohan Joseph
-RUN apt-get install wget -y \
+RUN apt-get update -y \
+    && apt-get upgrade -y \ 
+    && apt-get install wget -y \
     && apt-get update -y \
     && apt-get install nginx -y
 
-RUN mkdir /etc/service/nginx
-ADD nginx.sh /etc/service/nginx/nginx
+RUN mkdir -p /etc/service/nginx
+ADD nginx.sh /etc/service/nginx/run
+RUN chmod a+x /etc/service/nginx/run
 EXPOSE 80
 CMD ["/sbin/my_init"]
 
