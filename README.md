@@ -1,2 +1,0 @@
-# fusedPostgresql
-dockerfile for postgresql
